@@ -26,11 +26,11 @@ var setImages = function(urls){
     console.log("w:", tmp.src.width, " h:", tmp.src.height);
     */
     if(f){
-      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this));
+      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this)).css('position', 'absolute');
       f = false;
     }
     else {
-      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this)).css('display', 'none');
+      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this)).css('display', 'none').css('position', 'absolute');
     }
   //  console.log($("#images img").attr("src"), " w:", $("#images img").attr("width"), " h:",$("#images img").attr("height"));
    });
