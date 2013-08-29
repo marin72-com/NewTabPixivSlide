@@ -66,8 +66,8 @@ var showImages = function(urls){
  $('#myslider').juicyslider({
     mask: 'strip',
     autoplay: 4000,
-    show: {effect: 'drop', duration: 2000},
-    hide: {effect: 'drop', duration: 2000},
+    show: {effect: 'scale', duration: 400},
+    hide: {effect: 'drop', duration: 400},
     width: null,
     height: null,
   });
