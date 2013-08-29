@@ -14,6 +14,7 @@ var setImages = function(urls){
     urls[0] = s2;
   }
   console.log("set" , urls);
+  var f = true;
   $(urls).each(function() {
     /*
     $("<img>").attr("width", this.width).appendTo("#images");
@@ -24,7 +25,13 @@ var setImages = function(urls){
     console.log(tmp.src);
     console.log("w:", tmp.src.width, " h:", tmp.src.height);
     */
-    $('<li>').appendTo('#images ul').html($('<img>').attr('src', this));
+    if(f){
+      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this));
+      f = false;
+    }
+    else {
+      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this)).css('display', 'none');
+    }
   //  console.log($("#images img").attr("src"), " w:", $("#images img").attr("width"), " h:",$("#images img").attr("height"));
    });
 };
@@ -44,7 +51,7 @@ var viewImages = function(){
 var slideImage = function(){
   console.log("kiteru");
   //$("#images").hide();
-  $('#images').juicyslider();
+
 };
 
 // 画像を表示
@@ -55,7 +62,15 @@ var showImages = function(urls){
 
  // viewImages();
   // 画像をスライドさせる
-  slideImage();
+ // slideImage();
+ $('#myslider').juicyslider({
+    mask: 'strip',
+    autoplay: 4000,
+    show: {effect: 'drop', duration: 2000},
+    hide: {effect: 'drop', duration: 2000},
+    width: null,
+    height: null,
+  });
 };
 
 
@@ -97,10 +112,11 @@ jQuery(function($) {
   // ログイン状態(phpsessidがあるか)を確かめる -> background
   chrome.runtime.sendMessage({type: "getLoginStatus"}, function(loggedIn) {
     // ログイン状態だと
-    if (loggedIn) 
+    if (loggedIn) {
       // .login_link は見えなくなる
-      $("body").addClass('logged_in');
-
+     // $("body").addClass('logged_in');
+      $(".login_link").hide();
+    }
     // ログイン->ユーザーのブックマーク / 非ログイン->デイリーランキング    
     var loop = true;
     var type = loggedIn ? "getFavoritedIllusts" : "getDailyRanking";

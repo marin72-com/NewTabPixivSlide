@@ -2,13 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="newtab.css">
 		<script type="text/javascript" src="../scripts/jquery.js"></script>
 		<script type="text/javascript" src="../scripts/jquery-ui.js"></script>
 		<script type="text/javascript" src="../scripts/newtab.js"></script>
 		<script type="text/javascript" src="../scripts/background.js"></script>
 		<script type="text/javascript" src="../scripts/juicyslider.js"></script>
-		<link href="../css/juicyslider.css"></script>
+		<link href="newtab.css">
+		<link href="../css/juicyslider.css">
 		<title>新しいタブ</title>
 	</head>
 	<body>
@@ -19,8 +19,11 @@
 			<dd>お気に入り登録しよう!!</dd>
 			<a href="http://www.pixiv.net/search_user.php" target="_blank" >おすすめユーザー</a>
 		</div>
-		<div id="images">
+		<div id="myslider" class="juicyslider">
 			<ul></ul>
+	    <div class="nav next"></div>
+	    <div class="nav prev"></div>
+	    <div class="mask"></div>
 		</div>
 	</body>
 </html>
