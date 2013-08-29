@@ -15,23 +15,36 @@ var setImages = function(urls){
   }
   console.log("set" , urls);
   $(urls).each(function() {
-    $("<img>").attr("src", this).appendTo("#images");
+    /*
+    $("<img>").attr("width", this.width).appendTo("#images");
+    $("<img>").attr("height", this.height).appendTo("#images");
+    console.log("w:", $("#images img").attr("src"), " h:",$("#images img").attr("height"));
+    var tmp = new Image();
+    tmp.src = 
+    console.log(tmp.src);
+    console.log("w:", tmp.src.width, " h:", tmp.src.height);
+    */
+    $('<li>').appendTo('#images ul').html($('<img>').attr('src', this));
+  //  console.log($("#images img").attr("src"), " w:", $("#images img").attr("width"), " h:",$("#images img").attr("height"));
+   });
+};
+
+/*
+var viewImages = function(){
+  var images = $("img");
+  images.each(function() {
+    console.log(this);
+    var orig_width = this.naturalWidth;
+    var orig_height = this.naturalHeight;
+    console.log($(window).width() );
   });
 };
+*/
 
 var slideImage = function(){
   console.log("kiteru");
-  console.log($("img").attr("src"));
-  console.log($("#images img").attr("src"));
-  $("img").hide();
-  $('#images img').maxImage({
-    isBackground: true,
-    slideShow: true,
-    slideShowTitle: false,
-    slideDelay: 3,
-    overflow: 'auto',
-    verticalAlign:'top'
-  });
+  //$("#images").hide();
+  $('#images').juicyslider();
 };
 
 // 画像を表示
@@ -39,6 +52,8 @@ var showImages = function(urls){
   console.log(urls);
   // 画像をimgタグに突っ込む
   setImages(urls);
+
+ // viewImages();
   // 画像をスライドさせる
   slideImage();
 };
