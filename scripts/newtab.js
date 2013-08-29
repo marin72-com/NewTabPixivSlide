@@ -2,6 +2,17 @@
 var loggingIn = false;
 
 var setImages = function(urls){
+  // URLをランダムにする
+  var len = urls.length;
+  for (var i = 0; i < len; i++){
+    var rnd = Math.floor(Math.random()*len);
+
+    var s1 = urls[0];
+    var s2 = urls[rnd];
+
+    urls[rnd] = s1;
+    urls[0] = s2;
+  }
   console.log("set" , urls);
   $(urls).each(function() {
     $("<img>").attr("src", this).appendTo("#images");
