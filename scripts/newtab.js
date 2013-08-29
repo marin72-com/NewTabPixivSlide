@@ -16,13 +16,6 @@ var setImages = function(urls){
   console.log("set" , urls);
   $(urls).each(function() {
     $("<img>").attr("src", this).appendTo("#images");
-    /* 
-    <img src="hogehoge"> として追加されているみたいだが、
-    class="bgmaximage"にはなってないみたい.
-    var tmp = ;
-    console.log($("img").attr("src")); # => http://i2.pixiv.net/img54/img/asukaziye/mobile/38074165_480mw.jpg 
-    console.log($(".bgmaximage").attr("src")); # => undefined 
-    */
   });
 };
 
@@ -64,8 +57,6 @@ var getIllust = function(type){
       showImages(response.urls);
     }
     else {
-      // いると思ったんだが
-      // loggedIn = true; 
       console.log(typeof response.urls);
       console.log("reload前");
       location.reload();
