@@ -1,12 +1,12 @@
 // pixivのAPiを叩く
 var getIllusts = function(callback, url) {
-	$.get(url,　function(data) {
-		var match = data.match(/"http:\/\/[^"]+?mw\.jpg[^"]*?"/g);
-		// 画像を表示する
+  $.get(url,　function(data) {
+    var match = data.match(/"http:\/\/[^"]+?mw\.jpg[^"]*?"/g);
+    // 画像を表示する
     var urls = $(match).map(function() {
       return this.replace(/^"|"$/g, "");
     });
-		callback(urls);
+    callback(urls);
   });
 };
 

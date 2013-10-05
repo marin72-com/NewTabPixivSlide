@@ -1,6 +1,18 @@
 // ログインをするときに使うフラグ
 var loggingIn = false;
 
+var setImageSize = function(){
+  console.log($("li").position());
+  var offset_top = $("li").position().top;
+  var orig_width = this.naturalWidth;
+  var orig_height = this.naturalHeight;
+  var window_width = $("#myslider").width();
+  var window_height = $("#myslider").height() - offset_top;
+
+  $(this).height(window_height);
+  $(this).width(orig_width * (window_height / orig_height));
+};
+
 var setImages = function(urls){
   // URLをランダムにする
   var len = urls.length;
@@ -15,6 +27,7 @@ var setImages = function(urls){
   }
   console.log("set" , urls);
   var f = true;
+  $('#myslider').css('position', 'absolute').css('top', '400').css('left', '0');
   $(urls).each(function() {
     /*
     $("<img>").attr("width", this.width).appendTo("#images");
@@ -26,11 +39,11 @@ var setImages = function(urls){
     console.log("w:", tmp.src.width, " h:", tmp.src.height);
     */
     if(f){
-      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this)).css('position', 'absolute');
+      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this).load(setImageSize)).css("position", "absolute").css("text-align", "center"). css("width", "100%");
       f = false;
     }
     else {
-      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this)).css('display', 'none').css('position', 'absolute');
+      $('<li>').appendTo('#myslider ul').html($('<img>').attr('src', this).load(setImageSize)).css('display', 'none').css("position", "absolute").css("text-align", "center"). css("width", "100%");
     }
   //  console.log($("#images img").attr("src"), " w:", $("#images img").attr("width"), " h:",$("#images img").attr("height"));
    });
@@ -65,9 +78,9 @@ var showImages = function(urls){
  // slideImage();
  $('#myslider').juicyslider({
     mask: 'strip',
-    autoplay: 4000,
-    show: {effect: 'scale', duration: 400},
-    hide: {effect: 'drop', duration: 400},
+    autoplay: 3000,
+    show: {effect: 'fade', duration: 1500},
+    hide: {effect: 'drop', duration: 1000},
     width: null,
     height: null,
   });
